@@ -1,0 +1,31 @@
+int pbuttompin=2;
+int relaypin=10;
+int val=0;
+int lightON=0;
+int pushed=0;
+void setup() {
+  pinMode(pbuttompin, INPUT);
+  pinMode(relaypin, OUTPUT);
+  digitalWrite(relaypin, HIGH); 
+
+}
+
+void loop() {
+  val=digitalRead(pbuttompin);
+  if(val== HIGH && lightON== LOW)
+  {
+    pushed=1-pushed;
+    delay(100);
+  }
+lightON=val;
+if(pushed== HIGH)
+{
+  Serial.println("lightON");
+  digitalWrite(relaypin, LOW);
+ }
+ else{
+  Serial.println("lightOFF");
+  digitalWrite(relaypin,HIGH);
+ }
+ delay(100);
+}
